@@ -1,0 +1,14 @@
+<div class="header">
+  <div class="row">
+    <button ng-click="cacher = !cacher; $parent.search='';" type="button" class="btn btn-default pull-right"><span class="glyphicon glyphicon-search"></span></button>
+    <div class="form-group">
+	    <div class="input-group" ng-show="!cacher">
+	      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+	      <input class="form-control"  ng-model="$parent.search" placeholder="Search by author">
+	    </div>
+    </div>
+    <div>
+    	<a href="/#/"><-- Back to main page</a>&nbsp;|&nbsp;<a href="/#/about">About</a>
+    </div>
+  </div>
+</div>
