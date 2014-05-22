@@ -31,10 +31,11 @@ angular.module('appQuoteApp')
 		});
 	}
 	$scope.addNew = function() {
-		$scope.news.push({news:$scope.shortN, author:$scope.author, });
+		$scope.news.push({news_short:$scope.shortN, news_longt:$scope.longN, author:$scope.authorN, date:new Date()});
 
-		$http.post('http://192.168.14.138:9292/quotes/news', {news_short:$scope.shortN, author:$scope.authorN, news_long:'', date:new Date()}).success(function(data){});
+		$http.post('http://192.168.14.138:9292/quotes/news', {news_short:$scope.shortN, author:$scope.authorN, news_long:$scope.longN, date:new Date()}).success(function(data){});
 		$scope.shortN = '';
+		$scope.longN = '';
 		$scope.authorN = '';
 	};
   });

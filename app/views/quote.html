@@ -1,9 +1,11 @@
-<ng-include src="'views/header.html'"></ng-include>
-
 <div class="col-md-12">
-<div class="panel panel-primary">
-  <div class="panel-heading"><span class="glyphicon glyphicon-user"></span>&nbsp;{{select.author}}</div>
-  <div class="panel-body">{{select.quote}}</div>
-  <div class="panel-footer">{{select.date | date : 'dd/MM/yyyy HH:mm'}}</div>
-</div>      
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+	        <a href="/#/quote/{{quote._id.$oid}}"><span class="glyphicon glyphicon-folder-open pull-right">&nbsp;</span></a>
+	        <span class="glyphicon glyphicon-user"></span>
+	        <span class="glyphicon glyphicon-trash pull-right" ng-click="removeComment(quote._id.$oid, $index);">&nbsp;</span>&nbsp;{{quote.author}}</div>
+	        <div class="panel-body">{{quote.quote}}</div>
+	        <div class="panel-footer">{{quote.date | date : 'dd/MM/yyyy HH:mm'}}</div>
+        </div>     
+    </div> 
 </div>

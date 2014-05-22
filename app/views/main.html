@@ -1,81 +1,67 @@
 <div class="jumbotron">
-  <h1>App Quote</h1>
-  <p>Les meilleures citations du web sont ici !</p>
+  	<h1>App Quote</h1>
+  	<p>Les meilleures citations du web sont ici !</p>
 </div>
 
 <ng-include src="'views/header.html'"></ng-include>
 
 <div class="row">
-  <div class="col-md-8">
-    <div class="row">
-    <h1>Quotes</h1>
-      <div class="col-md-12" ng-repeat="quote in quotes | filter:{author:search}">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-          <a href="/#/quote/{{quote._id.$oid}}"><span class="glyphicon glyphicon-folder-open pull-right">&nbsp;</span></a>
-          <span class="glyphicon glyphicon-user"></span>
-          <span class="glyphicon glyphicon-trash pull-right" ng-click="removeComment(quote._id.$oid, $index);">&nbsp;</span>&nbsp;{{quote.author}}</div>
-          <div class="panel-body">{{quote.quote}}</div>
-          <div class="panel-footer">{{quote.date | date : 'dd/MM/yyyy HH:mm'}}</div>
-        </div>      
-      </div>
-    </div>
-  </div>
-  <h1>Participer</h1>
-  <div class="col-md-4">
-    <form ng-submit="addComment()">
-      <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-          <input type="text" class="form-control" ng-model="author" placeholder="Author" required="required"/>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
-          <textarea class="form-control"  ng-model="quote" rows="4" placeholder="Quote" required="required"></textarea>
-        </div>
-        <input class="btn btn-primary" type="submit">
-    </form>
-  </div>
+  	<div class="col-md-8">
+	    <div class="row">
+		    <h1>Quotes</h1>
+		    <div class="col-md-12" ng-repeat="quote in quotes | filter:{author:search}">
+		      	<quote-display quote="quote"></quote-display>
+		    </div>
+	  	</div>
+	</div>
+	 <div class="col-md-4">
+	  	<h1>Participer</h1>
+	    <form ng-submit="addComment()">
+	      	<div class="input-group">
+	          	<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+	          	<input type="text" class="form-control" ng-model="author" placeholder="Author" required="required"/>
+	        </div>
+	        <div class="input-group">
+	          	<span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
+	          	<textarea class="form-control"  ng-model="quote" rows="4" placeholder="Quote" required="required"></textarea>
+	        </div>
+	        <input class="btn btn-primary" type="submit">
+	    </form>
+	  </div>
 
-  <div class="col-md-4">
-    <div class="row">
-      <h1>News</h1>
-      <div class="col-md-12" ng-repeat="new in news">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-          <span class="glyphicon glyphicon-trash pull-right" ng-click="removeNew(new._id.$oid, $index);"></span>
-            <span class="glyphicon glyphicon-plus pull-right" ng-show="!plus" ng-click="plus = !plus">&nbsp;</span>
-            <span class="glyphicon glyphicon-minus pull-right" ng-show="plus" ng-click="plus = !plus">&nbsp;</span>
-            <a href="/#/news/{{new._id.$oid}}"><span class="glyphicon glyphicon-folder-open pull-right">&nbsp;</span></a>
-            &nbsp;{{new.date | date : 'dd/MM/yyyy HH:mm'}}</div>
-          <div class="panel-body">
-            <p ng-show="!plus">{{new.news_short}}</p>
-            <p ng-show="plus">{{new.news_long}}</p>
-          </div>
-          <div class="panel-footer">{{new.author}}</div>
-        </div>      
-      </div>
-    </div>
-  </div>
 
-  <h1>Ajouter news</h1>
-  <div class="col-md-4">
-    <form ng-submit="addNew()">
-      <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-          <input type="text" class="form-control" ng-model="authorN" placeholder="Author" required="required"/>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
-          <textarea class="form-control"  ng-model="shortN" rows="4" placeholder="Short new" required="required"></textarea>
-        </div>
-        <input class="btn btn-primary" type="submit">
-    </form>
-  </div>
+		<div class="col-md-4">
+		    <div class="row">
+		      	<h1>News</h1>
+		      	<div class="col-md-12" ng-repeat="new in news">
+		        	<news-display new="new"></news-display>      
+		      	</div>
+		    </div>
+		</div>
 
+		<h1>Ajouter news</h1>
+		<div class="col-md-4">
+		    <form ng-submit="addNew()">
+		      	<div class="input-group">
+		          	<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+		          	<input type="text" class="form-control" ng-model="authorN" placeholder="Author" required="required"/>
+		        </div>
+		        <div class="input-group">
+		         	<span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
+		          	<textarea class="form-control"  ng-model="shortN" rows="4" placeholder="Short news" required="required"></textarea>
+		        </div>
+		        <div class="input-group">
+		          	<span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
+		          	<textarea class="form-control"  ng-model="longN" rows="4" placeholder="Long news" required="required"></textarea>
+		        </div>
+		        <input class="btn btn-primary" type="submit">
+		    </form>
+		</div>
+	</div>
 </div>
 
 
 <div class="footer">
-  <p><span class="glyphicon glyphicon-heart"></span> from Dédé</p>
-  <h4 class="text-muted">Powered by AngularJS</h3>
+  	<p><span class="glyphicon glyphicon-heart"></span> from Dédé</p>
+  	<h4 class="text-muted">Powered by AngularJS</h3>
 </div>
